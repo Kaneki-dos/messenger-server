@@ -34,7 +34,7 @@ function attach(io) {
         return ack?.({ error: 'You are not in this conversation.' });
       }
 
-      const kind = ['text', 'image', 'file'].includes(payload.kind) ? payload.kind : 'text';
+      const kind = ['text', 'image', 'file', 'audio'].includes(payload.kind) ? payload.kind : 'text';
       const body = typeof payload.body === 'string' ? payload.body.trim().slice(0, 4000) : '';
       const attachment = payload.attachment || null;
       if (!body && !attachment) return ack?.({ error: 'Nothing to send.' });
